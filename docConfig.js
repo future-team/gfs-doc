@@ -17,12 +17,14 @@ module.exports = {
 
         //版本信息
         version: '1.1.0',
+        //是否隐藏defined in 注解(代码定义于第几行)
+        hideFoundAt:'true',
         //是否禁止每个class里的methods、properties、events表格
-        disableClassItemTable:'true',
+        hideClassItemTable:'true',
         //是否隐藏tab栏
         hideTabItemList:'true',
-        //disableViewDemo:'true',
-        //disableEditCode:'true',
+        hideViewDemo:'true',
+        hideEditCode:'true',
         //设置默认active的tab，不设置的话默认激活detail tab
         activeTab:'method',
         //地址信息

@@ -91,7 +91,7 @@ div.filterAPi {
 }
 .example-content {
     margin-bottom: 10px;
-    padding:0 20px;
+    /*padding:0 20px;*/
 }
 .yui3-smart .sign-left1 {
     border-left: 5px #d9534f solid;
@@ -490,7 +490,7 @@ kbd .cmd {
     padding-bottom: 5px;
 }
 .nav.example-list {
-    margin:10px;
+    margin:10px 0 10px 0;
 }
 .nav.example-list a {
     cursor:pointer !important;
@@ -514,4 +514,19 @@ kbd .cmd {
 }
 .example-content .stdoc-code.active {
     display: block;
+}
+
+
+.example-list:empty{
+    display: none;
+}
+/*配置相关*/
+.hide-view-demo .btn-viewDemo{
+    display: none;
+}
+.hide-edit-code .btn-editDemo{
+    display: none;
+}
+.hide-found-at .foundat{
+    display: none;
 }

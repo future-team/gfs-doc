@@ -4,7 +4,7 @@
  <div class="well well-small sign-left3">
       {{{classDescription}}}
  </div>
-{{#if projectDisableClassItemTable}}
+{{#if projectHideClassItemTable}}
 {{else}}
     <div class="well well-small sign-left2 container-fluid" id="classesItems">
         <div class="row">
@@ -71,7 +71,7 @@
         </div>
     </div>
 {{/if}}
-<div>
+<div class="{{#if projectHideViewDemo}}hide-view-demo{{/if}}{{#if projectHideEditCode}} hide-edit-code{{/if}}{{#if projectHideFoundAt}} hide-found-at{{/if}}">
     {{#if projectHideTabItemList}}
     {{else}}
         <ul id="itemTab" class="nav nav-tabs">
