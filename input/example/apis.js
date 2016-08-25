@@ -42,6 +42,7 @@ module.exports = [
 
 /**
  * CheckboxGroup需与Input组件配合使用<br/>
+ * <a href='heheh'>hhhahahah</a>
  * 它的作用是将type=checkbox的Input组件在UI上成组的展示。只起到包装作用没有逻辑功能
  * @class 功能模块
  * */

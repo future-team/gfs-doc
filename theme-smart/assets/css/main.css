@@ -520,6 +520,19 @@ kbd .cmd {
 .example-list:empty{
     display: none;
 }
+body .table-bordered>tbody>tr>td,body .table-bordered>tbody>tr>th{
+    border: none;
+}
+body .apidocs .tab-content .item{
+    padding-left: 0px;
+}
+body .apidocs .item .name{
+    margin:5px 0px 10px 0px;
+}
+body .mainlogo img{
+    width: 37px;
+    height: 37px;
+}
 /*配置相关*/
 .hide-view-demo .btn-viewDemo{
     display: none;
