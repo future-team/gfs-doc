@@ -7,7 +7,12 @@ $(function() {
     function navInit() {
         var sidebar = $('#sidebar_list');
         sidebar.find(' > dt > span').click(function() {
-            $(this).toggleClass('glyphicon-plus').parent().next().toggleClass('hide');
+            if($(this).hasClass('glyphicon-plus')){
+                $(this).addClass('glyphicon-minus').removeClass('glyphicon-plus');
+            }else{
+                $(this).addClass('glyphicon-plus').removeClass('glyphicon-minus');
+            }
+            $(this).parent().next().toggleClass('hide');
         })
 
         $('#txtSearch').keyup(function(e) {
@@ -17,9 +22,9 @@ $(function() {
         })
 
         var path = window.location.pathname,
-            name = path.substring(path.lastIndexOf('/')),
-            current = sidebar.find('a[href$="' + name + '"]:first').addClass('active').parent().parent().parent();
-
+            name = path.substring(path.lastIndexOf('/'));
+        if(decodeURI){name=decodeURI(name);}
+        var current = sidebar.find('a[href$="' + name + '"]:first').addClass('active').parent().parent().parent();
         if (current.hasClass('hide')) {
             current.removeClass('hide').prev().children('span').removeClass('glyphicon-plus');
         }
