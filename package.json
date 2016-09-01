@@ -1,6 +1,6 @@
 {
     "name": "futureDocBuilder",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "description": "Javascript Document & Demo builder (base on YUIDoc and bootstrap 3).",
     "homepage": "https://github.com/future-team/doc-builder",
     "main": "smartDoc.js",
