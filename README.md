@@ -1,15 +1,11 @@
-SmartDoc
+gfs-doc
 ======================
 
-基于YUIDoc构建的Javascipt文档生成器。 
+基于YUIDoc构建的Javascipt文档生成器，二次开发改造。 
 
-详细介绍见我的博客: [JS文档和Demo自动化生成工具 - SmartDoc](http://www.cnblogs.com/zhh8077/p/4010991.html)和[注释编写说明](http://www.cnblogs.com/zhh8077/p/4011769.html)
+详细介绍见原作者博客: [JS文档和Demo自动化生成工具 - SmartDoc](http://www.cnblogs.com/zhh8077/p/4010991.html)和[注释编写说明](http://www.cnblogs.com/zhh8077/p/4011769.html)
 
-[生成示例地址](http://zhh77.github.io/smartDoc/)
-
-license : BSD
-
-0.1.1 特性 
+特性 
 --------------------
     * 加入@demo配置项，看可以动态抓取html和js的内容作为@example，同时支持扩展@demo读取
     * 支持jasmine测试js文件的单元代码抓取为@example
@@ -18,22 +14,12 @@ license : BSD
     * 主题改版
     * 去除@attribute属性设置，统一使用@property
 
-0.1.0 特性 
---------------------
-    * 基于Bootstrp3构建，排版和样式美化
-    * 支持html和js的Demo生成,与查看
-    * 提供在线的demo编辑页面（类似于jsfiddler）
-    * 同步jasmine的expect接口，使得单元测试与example的代码能够复用
-    * 可以配置化增强 - 项目信息配置；Document页面导航配置；demo依赖库配置
-    * 提供全局api查询和导航过滤功能，筛选更加便利
-    * 提供grunt插件 - grunt-contrib-smartdoc
-
 使用
 --------------------
 在目录中加入docConfig.js文件
 
-    npm install -g smartdoc
-    smartdoc
+    npm install -g gfs-doc
+    gfsdoc
 
 
 docConfig配置项说明
@@ -53,28 +39,35 @@ docConfig配置项说明
         project: {
 
             //项目名称
-            name: 'SmartDoc',
-
+            name: 'gfsdoc',
             //项目描述，可以配置html，会生成到document主页
-            description: '<h2>SmartDoc</h2> <p>Javascript Document builder base on YUIDoc.</p>',
-
+            // description: '<h2>SmartDoc</h2> <p>Javascript Document builder base on YUIDoc.</p>',
+    
             //版本信息
             version: '1.1.0',
-
+            //是否隐藏defined in 注解(代码定义于第几行)
+            hideFoundAt:'true',
+            //是否禁止每个class里的methods、properties、events表格
+            hideClassItemTable:'true',
+            //是否隐藏tab栏
+            hideTabItemList:'true',
+            hideViewDemo:'true',
+            hideEditCode:'true',
+            //设置默认active的tab，不设置的话默认激活detail tab
+            activeTab:'method',
             //地址信息
-            url: 'https://github.com/zhh77/smartjs',
-            //logo地址
-            logo : 'https://github.com/zhh77/logo.png',
+            url: 'https://github.com/future-team',
+    
             //导航信息
             navs: [{
-                name: "Home",
-                url: "https://github.com/zhh77/smartjs"
+                name: "首页",
+                url: "https://github.com/future-team"
             }, {
-                name: "Document",
-                url: ""
+                name: "文档",
+                url: "/"
             }, {
-                name: "About",
-                url: "https://github.com/zhh77/smartjs"
+                name: "关于",
+                url: "http://uedfamily.com/about/"
             }]
         },
 
@@ -115,4 +108,4 @@ docConfig配置项说明
 
 注意：生成后的代码编辑页面需要发布到服务器才能正常运行；
 
-[使用SmartDoc生成的SmartJS API地址](http://zhh77.github.io/smartjs/)
+[API地址](http://zhh77.github.io/smartjs/)

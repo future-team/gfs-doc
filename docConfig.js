@@ -1,6 +1,6 @@
 module.exports = {
     //扫描的文件路径
-    paths: ['input/example/'],
+    paths: ['input/code/'],
     demoDir:"input/demo/",
     //文档页面输出路径
     outdir: 'doc/',
@@ -11,35 +11,35 @@ module.exports = {
     //项目信息配置
     project: {
         //项目名称
-        name: 'SmartDoc',
+        name: 'gfsdoc',
         //项目描述，可以配置html，会生成到document主页
        // description: '<h2>SmartDoc</h2> <p>Javascript Document builder base on YUIDoc.</p>',
 
         //版本信息
         version: '1.1.0',
         //是否隐藏defined in 注解(代码定义于第几行)
-        hideFoundAt:'true',
+        //hideFoundAt:'true',
         //是否禁止每个class里的methods、properties、events表格
-        hideClassItemTable:'true',
+        //hideClassItemTable:'true',
         //是否隐藏tab栏
-        hideTabItemList:'true',
-        hideViewDemo:'true',
-        hideEditCode:'true',
+        //hideTabItemList:'true',
+        //hideViewDemo:'true',
+        //hideEditCode:'true',
         //设置默认active的tab，不设置的话默认激活detail tab
-        activeTab:'method',
+        //activeTab:'method',
         //地址信息
-        url: 'https://github.com/zhh77/smartdoc',
+        url: 'https://github.com/future-team',
 
         //导航信息
         navs: [{
-            name: "Home",
-            url: "https://github.com/zhh77/smartdoc"
+            name: "首页",
+            url: "https://github.com/future-team"
         }, {
-            name: "Document",
+            name: "文档",
             url: "/"
         }, {
-            name: "About",
-            url: "https://github.com/zhh77/smartdoc"
+            name: "关于",
+            url: "http://uedfamily.com/about/"
         }]
     },
     //demo页面需要加载的js库

@@ -1,3 +1,3 @@
-var smartDoc = require('./smartDoc.js');
+var smartDoc = require('./doc.js');
 
 smartDoc.build();

@@ -1,21 +1,21 @@
 {
-    "name": "futureDocBuilder",
+    "name": "gfs-doc",
     "version": "0.1.4",
     "description": "Javascript Document & Demo builder (base on YUIDoc and bootstrap 3).",
     "homepage": "https://github.com/future-team/doc-builder",
-    "main": "smartDoc.js",
+    "main": "gfsdoc.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": {
-        "name": "bo.an"
+        "name": "future-team"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/future-team/doc-builder.git"
+        "url": "https://github.com/future-team/gfs-doc.git"
     },
     "bugs": {
-        "url": "https://github.com/future-team/doc-builder/issues"
+        "url": "https://github.com/future-team/gfs-doc/issues"
     },
     "license": "MIT",
     "dependencies": {
@@ -26,6 +26,6 @@
         "jshint": "2.4.x"
     },
     "bin" : {
-        "docBuilder": "./bin/smartDoc"
+        "gfsdoc": "./bin/gfsdoc"
     }
 }
