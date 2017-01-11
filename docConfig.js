@@ -13,7 +13,7 @@ module.exports = {
         //项目名称
         name: 'gfsdoc',
         //项目描述，可以配置html，会生成到document主页
-       // description: '<h2>SmartDoc</h2> <p>Javascript Document builder base on YUIDoc.</p>',
+        //description: '<h2>SmartDoc</h2> <p>Javascript Document builder base on YUIDoc.</p>',
 
         //版本信息
         version: '1.1.0',
@@ -36,7 +36,7 @@ module.exports = {
             url: "https://github.com/future-team"
         }, {
             name: "文档",
-            url: "/"
+            url: "index.html"
         }, {
             name: "关于",
             url: "http://uedfamily.com/about/"
