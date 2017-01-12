@@ -194,10 +194,10 @@ $(function() {
     }
 
     function getCode(code, type) {
-        var index = code.indexOf('<' + type + '>');
+        var index = code.indexOf('<'+ type + '>');
 
         if (index > -1) {
-            return code.substring(index + type.length + 2, code.indexOf('</' + type + '>'));
+            return code.substring(index + type.length + 2, code.indexOf('</'+ type + '>'));
         }
     }
 

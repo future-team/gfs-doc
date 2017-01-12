@@ -1,8 +1,8 @@
 {
     "name": "gfs-doc",
-    "version": "0.1.5",
+    "version": "0.1.16",
     "description": "Javascript Document & Demo builder (base on YUIDoc and bootstrap 3).",
-    "homepage": "https://github.com/future-team/doc-builder",
+    "homepage": "https://github.com/future-team/gfs-doc",
     "main": "gfsdoc.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"

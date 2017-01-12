@@ -34,8 +34,8 @@ exports.build = function(config, callback) {
     });
 
     var defaultThemes = {
-        'default': basePath + '/theme-smart/',
-        'ui': basePath + '/theme-smart-ui/'
+        'default': basePath + '/theme/',
+        'ui': basePath + '/theme-ui/'
     };
 
     extendYUIDoc();
@@ -327,7 +327,7 @@ exports.build = function(config, callback) {
         var paths = fs.readdirSync(src);
 
         paths.forEach(function(fileName) {
-            copyRes(addRes, fileName, src + '/' + path, dst)
+            copyRes(addRes, fileName, src + (src.lastIndexOf('/')>=0?'':'/') + fileName, dst)
         });
 
     }
@@ -340,6 +340,7 @@ exports.build = function(config, callback) {
         }
 
         if (addRes('res/' + fileName)) {
+
             var _dst = dst + '/' + fileName,
                 readable, writable;
 
@@ -356,6 +357,7 @@ exports.build = function(config, callback) {
                     writable = fs.createWriteStream(_dst);
                     // 通过管道来传输流
                     readable.pipe(writable);
+                    addRes('res/' + fileName);
                 }
                 // 如果是目录则递归调用自身
                 else if (st.isDirectory()) {
@@ -363,5 +365,6 @@ exports.build = function(config, callback) {
                 }
             });
         }
+
     }
-}
+};
