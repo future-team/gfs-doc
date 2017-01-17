@@ -10,7 +10,7 @@
         <div class="row">
 
             <div class="index-section methods col-sm-4">
-                <h3>Methods</h3>
+                <h3>方法</h3>
                 {{#if methods}}
                     <ul class="index-list methods{{#if extends}} extends{{/if}}">
                         {{#methods}}
@@ -30,7 +30,7 @@
             </div>
 
             <div class="index-section properties col-sm-4">
-                <h3>Properties</h3>
+                <h3>属性</h3>
                 {{#if properties}}
                     <ul class="index-list properties{{#if extends}} extends{{/if}}">
                         {{#properties}}
@@ -50,7 +50,7 @@
             </div>
 
             <div class="index-section events col-sm-4">
-                <h3>Events</h3>
+                <h3>事件</h3>
                 {{#if events}}
                     <ul class="index-list events{{#if extends}} extends{{/if}}">
                         {{#events}}
@@ -75,15 +75,15 @@
     {{#if projectHideTabItemList}}
     {{else}}
         <ul id="itemTab" class="nav nav-tabs">
-            <li class="{{#if projectActiveTab}}{{#ifCond projectActiveTab '==' 'detail'}}active{{/ifCond}}{{else}}active{{/if}}"><a data-toggle="tab" href="#class">Detail</a></li>
+            <li class="{{#if projectActiveTab}}{{#ifCond projectActiveTab '==' 'detail'}}active{{/ifCond}}{{else}}active{{/if}}"><a data-toggle="tab" href="#class">详情</a></li>
             {{#if methods}}
-                <li class="{{#ifCond projectActiveTab '==' 'method'}}active{{/ifCond}}"><a data-toggle="tab" href="#method">Methods</a></li>
+                <li class="{{#ifCond projectActiveTab '==' 'method'}}active{{/ifCond}}"><a data-toggle="tab" href="#method">方法</a></li>
             {{/if}}
             {{#if properties}}
-                <li class="{{#ifCond projectActiveTab '==' 'property'}}active{{/ifCond}}"><a data-toggle="tab" href="#property">Properties</a></li>
+                <li class="{{#ifCond projectActiveTab '==' 'property'}}active{{/ifCond}}"><a data-toggle="tab" href="#property">属性</a></li>
             {{/if}}
             {{#if events}}
-                <li class="{{#ifCond projectActiveTab '==' 'event'}}active{{/ifCond}}"><a data-toggle="tab" href="#event">Events</a></li>
+                <li class="{{#ifCond projectActiveTab '==' 'event'}}active{{/ifCond}}"><a data-toggle="tab" href="#event">事件</a></li>
             {{/if}}
         </ul>
     {{/if}}
@@ -148,7 +148,7 @@
 
         {{#if methods}}
             <div id="method" class="tab-pane{{#ifCond projectActiveTab '==' 'method'}} active{{/ifCond}}">
-                <h2 class="off-left">Methods</h2>
+                <h2 class="off-left">方法</h2>
 
                 {{#methods}}
                     {{>method}}
@@ -158,7 +158,7 @@
 
         {{#if properties}}
             <div id="property" class="tab-pane{{#ifCond projectActiveTab '==' 'property'}} active{{/ifCond}}">
-                <h2 class="off-left">Properties</h2>
+                <h2 class="off-left">属性</h2>
 
                 {{#properties}}
                     {{>props}}
@@ -168,7 +168,7 @@
 
         {{#if events}}
             <div id="event" class="tab-pane{{#ifCond projectActiveTab '==' 'event'}} active{{/ifCond}}">
-                <h2 class="off-left">Events</h2>
+                <h2 class="off-left">事件</h2>
 
                 {{#events}}
                     {{>events}}

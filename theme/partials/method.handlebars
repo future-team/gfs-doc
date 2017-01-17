@@ -95,10 +95,10 @@
 
     {{#if params}}
         <div class="params">
-            <h4>Parameters:</h4>
+            <h4>参数:</h4>
 
             <table class="table table-bordered">
-            <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
+            <tr class='active'><th>参数名</th><th>类型</th><th>标识</th><th>描述</th></tr>
             {{#params}}
                 <tr class="param">
                     {{#if optional}}
@@ -214,8 +214,8 @@
             <div class="example-content {{#if show}} showdemo {{/if}}">
                 {{{example}}}
             </div>
-             <button class="btn btn-info btn-viewDemo" type="button">view demo</button>
-            <button class="btn btn-info btn-editDemo" type="button">edit code</button>
+             <button class="btn btn-info btn-viewDemo" type="button">查看示例</button>
+            <button class="btn btn-info btn-editDemo" type="button">编辑代码</button>
         </div>
     {{/if}}
 </div>

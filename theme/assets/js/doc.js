@@ -309,4 +309,45 @@ $(function() {
 
     $(window).resize(autoHeight);
     autoHeight();
+
+    $(function(){
+        var sidebar = $('#sidebar');
+        $('.icon-sidebar-btn').on('click',function(){
+            var $this = $(this);
+            if($this.hasClass('icon-sidebar-btn-open') ){
+                sidebar.animate({
+                    'margin-left':-260
+                },400,function(){
+                    $this.removeClass('icon-sidebar-btn-open').addClass('icon-sidebar-btn-close').html('<span class="glyphicon glyphicon-chevron-right"></span>展开');
+                    $this.animate({
+                        'right':-50
+                    },400,function(){
+
+                    }).end();
+                });
+                $('.stdoc-content').animate({'margin-left':0},400);
+
+            }else{
+                sidebar.animate({
+                    'margin-left':0
+                },400,function(){
+                    $this.removeClass('icon-sidebar-btn-close').addClass('icon-sidebar-btn-open').html('<span class="glyphicon glyphicon-chevron-left"></span>收起');
+                    $this.animate({
+                        'right':10
+                    },400,function(){
+
+                    }).end();
+                });
+                if(!navigator.userAgent.match(/mobile/i)) {
+                    $('.stdoc-content').animate({'margin-left': 260}, 400);
+                }
+            }
+        });
+
+        //如果是移动端隐藏sidebar
+        if(navigator.userAgent.match(/mobile/i)){
+            $('.icon-sidebar-btn').trigger('click');
+            $('body').css('font-size',12);
+        }
+    });
 });
