@@ -696,3 +696,32 @@ body .apidocs .tab-content #property .item:hover h3,body .apidocs .tab-content #
 .navbar-collapse.in{
     overflow-y: visible;
 }
+
+.params-box{
+    margin: 5px 0;
+}
+.params-box .param-description{
+    font-size: 90%;
+    margin-left: 5px;
+    /*line-height: 20px;*/
+    /*margin: 5px 0;*/
+}
+.params-box .param-description p{
+    display: inline-block;
+    line-height: 22px;
+}
+.params-wap-table{
+    display: none;
+}
+@media (max-width:768px){
+
+    .params-pc-table{
+        display: none;
+    }
+    .params-wap-table{
+        display: block;
+    }
+    body{
+        font-size: 12px;
+    }
+}

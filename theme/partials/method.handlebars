@@ -96,90 +96,158 @@
     {{#if params}}
         <div class="params">
             <h4>参数:</h4>
+            <div class="clearfix params-wap-table">
+                {{#params}}
+                    <div class="params-box">
+                        {{#if optional}}
+                            <code class="param-name optional">[{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]</code>
+                            <span class="type">{{#crossLink type}}{{/crossLink}}</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        {{else}}
+                            <code class="param-name">{{name}}</code>
+                            <span class="type">{{#crossLink type}}{{/crossLink}}</span>
+                        {{/if}}
 
-            <table class="table table-bordered">
-            <tr class='active'><th>参数名</th><th>类型</th><th>标识</th><th>描述</th></tr>
-            {{#params}}
-                <tr class="param">
-                    {{#if optional}}
-                    <td>
-                        <code class="param-name optional">[{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]</code></td>
-                    <td><span class="type">{{#crossLink type}}{{/crossLink}}</span></td>
-                    <td><span class="flag optional" title="This parameter is optional.">optional</span>
-                    {{else}}
-                       <td> <code class="param-name">{{name}}</code>
-                       <td> <span class="type">{{#crossLink type}}{{/crossLink}}</span>
-                       <td>
-                    {{/if}}
+                        {{#if multiple}}
+                            <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
+                        {{/if}}
 
-                    {{#if multiple}}
-                        <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
-                    {{/if}}
-                    </td>
-                    <td><div class="param-description">
-                        {{{description}}}
+                        <span class="param-description">
+                            {{{description}}}
+                        </span>
                     </div>
-
                     {{#if props}}
-                        <table class="table table-bordered">
-                         <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
-                           {{#props}}
-                            <tr class="param">
-                            {{#if optional}}
-                                <td>
-                                    <code class="param-name optional">[{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]</code></td>
-                                <td><span class="type">{{#crossLink type}}{{/crossLink}}</span></td>
-                                <td><span class="flag optional" title="This parameter is optional.">optional</span>
+                        {{#props}}
+                            <div class="params-box">
+                                {{#if optional}}
+                                    <code class="param-name optional">[{{../../name}}.{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]</code>
+                                    <span class="type">{{#crossLink type}}{{/crossLink}}</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
                                 {{else}}
-                                   <td> <code class="param-name">{{name}}</code>
-                                   <td> <span class="type">{{#crossLink type}}{{/crossLink}}</span>
-                                   <td>
+                                    <code class="param-name">{{../../name}}.{{name}}</code>
+                                    <span class="type">{{#crossLink type}}{{/crossLink}}</span>
                                 {{/if}}
 
                                 {{#if multiple}}
                                     <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
                                 {{/if}}
-                                </td>
-                                <td><div class="param-description">
+
+                                <span class="param-description">
                                     {{{description}}}
-                                </div>
-                                {{#if props}}
-                                    <table class="table table-bordered">
-                                     <tr class='active'><th>name</th><th>type</th><th>flag</th><th>description</th></tr>
-                                       {{#props}}
-                                        <tr class="param">
+                                </span>
+                            </div>
+
+                            {{#if props}}
+                                {{#props}}
+                                    <div class="params-box">
+                                        {{#if optional}}
+                                            <code class="param-name optional">[{{../../../../name}}.{{../../name}}.{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]</code>
+                                            <span class="type">{{#crossLink type}}{{/crossLink}}</span>
+                                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                                        {{else}}
+                                            <code class="param-name">{{../../../../name}}.{{../../name}}.{{name}}</code>
+                                            <span class="type">{{#crossLink type}}{{/crossLink}}</span>
+                                        {{/if}}
+
+                                        {{#if multiple}}
+                                            <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
+                                        {{/if}}
+
+                                        <span class="param-description">
+                                            {{{description}}}
+                                        </span>
+                                    </div>
+                                {{/props}}
+                            {{/if}}
+
+                        {{/props}}
+                    {{/if}}
+                {{/params}}
+            </div>
+
+            <table class="table table-bordered params-pc-table">
+                <tr class='active'><th>参数名</th><th>类型</th><th>标识</th><th>描述</th></tr>
+                {{#params}}
+                    <tr class="param">
+                        {{#if optional}}
+                            <td><code class="param-name optional">[{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]</code></td>
+                            <td><span class="type">{{#crossLink type}}{{/crossLink}}</span></td>
+                        <td><span class="flag optional" title="This parameter is optional.">optional</span>
+                        {{else}}
+                            <td> <code class="param-name">{{name}}</code>
+                            <td> <span class="type">{{#crossLink type}}{{/crossLink}}</span>
+                        <td>
+                        {{/if}}
+
+                        {{#if multiple}}
+                            <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
+                        {{/if}}
+                    </td>
+                    <td><div class="param-description">
+                        {{{description}}}
+                    </div>
+
+                        {{#if props}}
+                            <table class="table table-bordered">
+                                <tr class='active'><th>参数名</th><th>类型</th><th>标识</th><th>描述</th></tr>
+                                {{#props}}
+                                    <tr class="param">
                                         {{#if optional}}
                                             <td>
                                                 <code class="param-name optional">[{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]</code></td>
-                                                <td><span class="type">{{#crossLink type}}{{/crossLink}}</span></td>
-                                                <td><span class="flag optional" title="This parameter is optional.">optional</span>
-                                                {{else}}
-                                                   <td> <code class="param-name">{{name}}</code>
-                                                   <td> <span class="type">{{#crossLink type}}{{/crossLink}}</span>
-                                                   <td>
-                                                {{/if}}
+                                            <td><span class="type">{{#crossLink type}}{{/crossLink}}</span></td>
+                                        <td><span class="flag optional" title="This parameter is optional.">optional</span>
+                                        {{else}}
+                                            <td> <code class="param-name">{{name}}</code>
+                                            <td> <span class="type">{{#crossLink type}}{{/crossLink}}</span>
+                                        <td>
+                                        {{/if}}
 
-                                                {{#if multiple}}
-                                                    <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
-                                                {{/if}}
-                                                </td>
-                                                <td><div class="param-description">
-                                                    {{{description}}}
-                                                </div>
-                                             </td>
-                                        </tr>
-                                        {{/props}}
-                                    </table>
+                                        {{#if multiple}}
+                                            <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
+                                        {{/if}}
                                     </td>
-                                {{/if}}
-                            </tr>
-                            {{/props}}
-                        </table>
+                                    <td><div class="param-description">
+                                        {{{description}}}
+                                    </div>
+                                        {{#if props}}
+                                            <table class="table table-bordered">
+                                                <tr class='active'><th>参数名</th><th>类型</th><th>标识</th><th>描述</th></tr>
+                                                {{#props}}
+                                                    <tr class="param">
+                                                        {{#if optional}}
+                                                            <td>
+                                                                <code class="param-name optional">[{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]</code></td>
+                                                            <td><span class="type">{{#crossLink type}}{{/crossLink}}</span></td>
+                                                        <td><span class="flag optional" title="This parameter is optional.">optional</span>
+                                                        {{else}}
+                                                            <td> <code class="param-name">{{name}}</code>
+                                                            <td> <span class="type">{{#crossLink type}}{{/crossLink}}</span>
+                                                        <td>
+                                                        {{/if}}
+
+                                                        {{#if multiple}}
+                                                            <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
+                                                        {{/if}}
+                                                    </td>
+                                                        <td><div class="param-description">
+                                                            {{{description}}}
+                                                        </div>
+                                                        </td>
+                                                    </tr>
+                                                {{/props}}
+                                            </table>
+                                        </td>
+                                        {{/if}}
+                                    </tr>
+                                {{/props}}
+                            </table>
                         </td>
-                    {{/if}}
-                </tr>
-            {{/params}}
+                        {{/if}}
+                    </tr>
+                {{/params}}
             </table>
+
         </div>
     {{/if}}
 

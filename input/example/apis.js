@@ -97,8 +97,10 @@ module.exports = [
 /**
  * 发送一个请求，获取服务器端的数据<br/>
  * @method ajax
+ * @optional
  * @param opts {Object}
  * @param opts.success {Function} 成功后的回调方法
+ * @param opts.success.show {Function} 这是真的么
  * @param opts.fail {Function} 失败后的回调方法
  * @param opts.data {Object} 传递给服务端的参数
  * @param opts.method {String} 请求方式 get|post
