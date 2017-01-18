@@ -61,7 +61,10 @@
 <script src="{{projectAssets}}/js/config.js"></script>
 <script src="{{projectAssets}}/js/doc.js"></script>
 {{#if projectScript}}
-    <script src="{{projectAssets}}/res/{{projectScript}}"></script>
+    {{#each projectScript}}
+        <script src="{{projectAssets}}/res/{{this}}"></script>
+    {{/each}}
+
 {{/if}}
 </body>
 </html>
