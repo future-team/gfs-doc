@@ -29,7 +29,7 @@ module.exports = {
         //activeTab:'method',
         //地址信息
         url: 'https://github.com/future-team',
-
+        script:'uicode.js',
         //导航信息
         navs: [{
             name: "首页",
