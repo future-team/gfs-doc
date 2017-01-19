@@ -60,9 +60,9 @@
 <script src="{{projectAssets}}/vendor/prettify/prettify-min.js"></script>
 <script src="{{projectAssets}}/js/config.js"></script>
 <script src="{{projectAssets}}/js/doc.js"></script>
-{{#if projectScript}}
-    {{#each projectScript}}
-        <script src="{{projectAssets}}/res/{{this}}"></script>
+{{#if projectScripts}}
+    {{#each projectScripts}}
+        <script src="{{../projectAssets}}/res/{{this}}"></script>
     {{/each}}
 
 {{/if}}

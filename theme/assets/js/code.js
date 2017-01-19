@@ -44,7 +44,7 @@ $(function() {
                code = window.name;
            }
         }
-        return decodeURIComponent(code);
+        return decodeURIComponent(decodeURIComponent(code));
     }
 
     code = getPramByUrl('code');

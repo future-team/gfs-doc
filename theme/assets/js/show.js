@@ -12,7 +12,7 @@
             }
         }
 
-        return decodeURIComponent(code);
+        return decodeURIComponent(decodeURIComponent(code));
     }
 
 	var code = getPramByUrl('code'),

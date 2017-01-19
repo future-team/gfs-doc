@@ -136,7 +136,7 @@ $(function() {
              loadShowDemo(demo);
         });
 
-        $('.btn-viewDemo').click(openDemo).next().click(editDemo);
+        $('.btn-viewDemo').on('click',openDemo).next().on('click',editDemo);
     }
     function loadShowDemo(code){
         if(code.hasClass('demo-loaded'))
