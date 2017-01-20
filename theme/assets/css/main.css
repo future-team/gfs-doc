@@ -721,7 +721,7 @@ body .apidocs .tab-content #property .item:hover h3,body .apidocs .tab-content #
     .params-wap-table{
         display: block;
     }
-    body{
+    body,pre code{
         font-size: 12px;
     }
     .stdoc-content{
