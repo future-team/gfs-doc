@@ -271,7 +271,7 @@
     {{/return}}
 
     {{#if example}}
-        <div class="example{{#if isApp}} app-example{{/if}}">
+        <div class="example{{#if isApp}}{{#if show}} app-example{{/if}}{{/if}}">
             <h4>Example:</h4>
             <ul class="nav nav-tabs example-list">
                 {{#each exampleTitles}}

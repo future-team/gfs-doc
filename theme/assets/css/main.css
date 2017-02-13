@@ -752,8 +752,8 @@ body .apidocs .tab-content #property .item:hover h3,body .apidocs .tab-content #
         position: relative;
     }
     .app-example .device {
-        position: absolute;
         display: block;
+        position: absolute;
         top: 78px;
         left: 16px;
         width: 395px;
@@ -790,4 +790,5 @@ body .apidocs .tab-content #property .item:hover h3,body .apidocs .tab-content #
     .app-example .btn-method-box{
         text-align: right;
     }
+
 }
