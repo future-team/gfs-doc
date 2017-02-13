@@ -1,6 +1,7 @@
 module.exports = {
     //扫描的文件路径
     paths: ['input/code/'],
+    demoUrl:'http://172.24.101.249:8000/input/demo/',
     demoDir:"input/demo/",
     //文档页面输出路径
     outdir: 'doc/',
@@ -14,7 +15,8 @@ module.exports = {
         name: 'gfsdoc',
         //项目描述，可以配置html，会生成到document主页
         //description: '<h2>SmartDoc</h2> <p>Javascript Document builder base on YUIDoc.</p>',
-
+        //是否是移动设备平台
+        isApp:true,
         //版本信息
         version: '1.1.0',
         //是否隐藏defined in 注解(代码定义于第几行)

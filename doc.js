@@ -254,6 +254,9 @@ exports.build = function(config, callback) {
                 var v = [];
                 if(value.indexOf('|')>=0 ){
                     v= value.split('|');
+                    if(config.demoUrl){
+                        v[0] = config.demoUrl+v[0];
+                    }
                 }else{
                     v = ['',value];
                 }
@@ -262,6 +265,7 @@ exports.build = function(config, callback) {
                     urls.push(v[0]);
                     content.push(data.code);
                     titles.push(data.title);
+                    target['isApp'] = config.project.isApp;
                 }
             }
         }

@@ -151,6 +151,7 @@ $(function() {
             ifr.load(loadDemo.bind(ifr,demoUrl));
             code.prepend(ifr);
             if(demoUrl && demoUrl!=''){
+                ifr.attr('src', demoUrl);
                 //隐藏查看示例和编辑代码按钮
                 $('.btn-viewDemo').hide().next().hide();
             }else{
@@ -200,10 +201,14 @@ $(function() {
             js = getCode(code, 'script') || (html && code);
 
             win.__st_render(html, js);
-            ifr.height(win.document.body.scrollHeight);
+            $('.app-example').size()<=0 &&(ifr.height(win.document.body.scrollHeight) );
         }else{
-            ifr.height(win.document.body.scrollHeight);
-        }
+            $('.app-example').size()<=0 &&(ifr.height(win.document.body.scrollHeight) );
+        }/*else{
+            ifr.css('height',ifr.eq(0).contents().find('html').height() + 'px');
+        }*/
+
+        //ifr.height(win.document.body.scrollHeight);
         //ifr.css('height',ifr.eq(0).contents().find('html').height() + 'px');
     }
 
