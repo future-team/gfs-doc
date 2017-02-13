@@ -275,7 +275,7 @@
             <h4>Example:</h4>
             <ul class="nav nav-tabs example-list">
                 {{#each exampleTitles}}
-                <li role="presentation" {{#if @index}} {{else}} class="active" {{/if}} _no='{{@index}}'> <a>{{this}}</a></li>
+                <li role="presentation" {{#if @index}} {{else}} class="active" {{/if}} data-demo="{{getValueByIndex ../exampleUrls @index}}"  _no='{{@index}}'> <a>{{this}}</a></li>
                 {{/each}}
             </ul>
 

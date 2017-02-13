@@ -32,6 +32,9 @@ exports.build = function(config, callback) {
                 return options.inverse(this);
         }
     });
+    Y.Handlebars.registerHelper('getValueByIndex', function (arr,index) {
+        return arr && arr.length ? arr[index]:'';
+    });
 
     var defaultThemes = {
         'default': basePath + '/theme/',
@@ -235,17 +238,28 @@ exports.build = function(config, callback) {
         //扩展demo标签处理
         Y.DocParser.DIGESTERS.demo = function(tagname, value, target, block) {
             var content = target["example"],
+                urls = target['exampleUrls'],
                 data,titles = target["exampleTitles"];
 
             if(!content)
                 content = target["example"] = [];
 
-             if(!titles)
+            if(!titles)
                 titles = target["exampleTitles"] = [];
+            if(!urls)
+                urls = target['exampleUrls']=[];
+
 
             if (value) {
-                var data = demoBuilder.build(value, config, target);
+                var v = [];
+                if(value.indexOf('|')>=0 ){
+                    v= value.split('|');
+                }else{
+                    v = ['',value];
+                }
+                var data = demoBuilder.build(v[1], config, target);
                 if(data && data.code){
+                    urls.push(v[0]);
                     content.push(data.code);
                     titles.push(data.title);
                 }

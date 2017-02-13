@@ -13,7 +13,7 @@
      * @constructor
      * @content {string} type 内容
      * @demo ui.html
-     * @demo ui2.html {ui测试2}
+     * @demo http://uedfamily.com|ui2.html {ui测试2}
      * @show true
      */		
 	function UI(content){
