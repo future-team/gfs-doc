@@ -1,6 +1,7 @@
 module.exports = {
     //扫描的文件路径
     paths: ['input/code/'],
+    //配置demo链接
     demoUrl:'http://172.24.101.249:8000/input/demo/',
     demoDir:"input/demo/",
     //文档页面输出路径
