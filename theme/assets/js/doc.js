@@ -201,12 +201,16 @@ $(function() {
             js = getCode(code, 'script') || (html && code);
 
             win.__st_render(html, js);
-            $('.app-example').size()<=0 &&(ifr.height(win.document.body.scrollHeight) );
+            //($('.app-example').size()<=0 || $(window).width()>768) &&(ifr.height(win.document.body.scrollHeight) );
+        }
+
+        if($('.app-example').size()>0){
+            if($(window).width()<=768){
+                ifr.height(win.document.body.scrollHeight);
+            }
         }else{
-            $('.app-example').size()<=0 &&(ifr.height(win.document.body.scrollHeight) );
-        }/*else{
-            ifr.css('height',ifr.eq(0).contents().find('html').height() + 'px');
-        }*/
+            ifr.height(win.document.body.scrollHeight);
+        }
 
         //ifr.height(win.document.body.scrollHeight);
         //ifr.css('height',ifr.eq(0).contents().find('html').height() + 'px');
