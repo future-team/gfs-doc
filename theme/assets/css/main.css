@@ -713,6 +713,11 @@ body .apidocs .tab-content #property .item:hover h3,body .apidocs .tab-content #
 .params-wap-table{
     display: none;
 }
+/*版本切换下拉框样式*/
+div.filterVersion {
+    margin-right: 0!important;
+}
+
 @media (max-width:768px){
 
     .params-pc-table{

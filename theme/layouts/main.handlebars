@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{projectAssets}}/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="{{projectAssets}}/favicon.png">
 </head>
-<body class="yui3-smart" _assetsPath="{{projectAssets}}">
+<body class="yui3-smart" _assetsPath="{{projectAssets}}" _docVersion="{{projectDocVersion}}">
  <nav class="navbar navbar-inverse navbar-fixed-top custom-navbar" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -40,6 +40,14 @@
                 <input type="text" id='txtSearchAPI' class="form-control search-query" placeholder="Search for API" />
                  <ul id="filterList" class="filterItems dropdown-menu" role="menu"></ul>
                 </div>
+                <div class="navbar-form navbar-right filterVersion" autocomplete="off">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            v {{projectDocVersion}}<span class="caret"></span>
+                        </button>
+                        <ul id="versionList" class="dropdown-menu"></ul>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -60,6 +68,7 @@
 <script src="{{projectAssets}}/vendor/prettify/prettify-min.js"></script>
 <script src="{{projectAssets}}/js/config.js"></script>
 <script src="{{projectAssets}}/js/doc.js"></script>
+<script src="../versions.js"></script>
 {{#if projectScripts}}
     {{#each projectScripts}}
         <script src="{{../projectAssets}}/res/{{this}}"></script>

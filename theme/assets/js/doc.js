@@ -373,4 +373,19 @@ $(function() {
             $('body').css('font-size',12);
         }
     });
+
+    // versions list 
+    if(window.__versionConfig){
+        var versionList = $('#versionList'),
+            path = location.pathname,
+            result = []
+        if (path.charAt(path.length - 1) === '/' || path.lastIndexOf('/index.html') > 0)
+            path = "../";
+        else
+            path = "../../";
+        window.__versionConfig.forEach(function(item) {
+            result.push('<li><a href="'+ path + item.url+'">'+item.version+'</a></li>');
+        })
+        versionList.html(result.join(''));
+    }
 });

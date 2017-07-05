@@ -7,8 +7,16 @@ exports.build = function(config, callback) {
         demoBuilder,
         stat = fs.stat,
         basePath = path.dirname(fs.realpathSync(__filename)),
-        themeDir;
-
+        themeDir,
+        shelljs = require('shelljs'),
+        pkg = require(fs.realpathSync('.') + '/package.json');
+    // 检查项目的package.json 的信息
+    if(!pkg){
+        console.error('the project package.json files not exits.')
+        pkg = {
+            version: '1.0.0'
+        }
+    }
     Y.Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
 
         switch (operator) {
@@ -49,7 +57,16 @@ exports.build = function(config, callback) {
         if (config) {
             return config;
         }
-        return require(fs.realpathSync('.') + '/docConfig.js');
+        // 重新组装项目的配置信息
+        var docConfig = require(fs.realpathSync('.') + '/docConfig.js');
+        docConfig.rootOutdir = docConfig.outdir || 'doc/'
+        //  TODO 根据版本号命名
+        docConfig.outdir = (docConfig.outdir|| 'doc/') + 'doc_' +pkg.version + '/';
+        // 设置页面变量
+        docConfig.project.docVersion = pkg.version;
+        // 提前创建好目录，防止报错
+        shelljs.mkdir('-p', docConfig.outdir);
+        return docConfig;
     }
 
     function buildDoc(options) {
@@ -79,6 +96,8 @@ exports.build = function(config, callback) {
             codeLoader: './jasmineLoader.js'
         });
 
+        // 设置版本号数据
+        config.project.versions = getVersionsConf();
         //主题判断
         if (config.themedir) {
              themeDir = config.themedir;
@@ -99,7 +118,7 @@ exports.build = function(config, callback) {
             return;
         }
         options = Y.Project.mix(json, options);
-
+        
         var builder = new Y.DocBuilder(options, json);
 
         var starttime = Date.now();
@@ -119,7 +138,7 @@ exports.build = function(config, callback) {
 
     function buildDocConfig(data, meta, options) {
         var items = [];
-
+        
         Y.each(data.modules, function(item) {
             item.name && items.push({
                 type: 'module',
@@ -146,7 +165,7 @@ exports.build = function(config, callback) {
             filterItems: items
         }
 
-        fs.appendFileSync(options.outdir + 'assets/js/config.js', "window['__docConfig'] = " + JSON.stringify(config)) + ";";
+        fs.appendFileSync(options.outdir + 'assets/js/config.js', "window['__docConfig'] = " + JSON.stringify(config) + ";");
     }
 
     function extendYUIDoc() {
@@ -384,5 +403,45 @@ exports.build = function(config, callback) {
             });
         }
 
+    }
+
+    // 同时写一份 versions.js 文件记录版本信息
+    function getVersionsConf(){
+        var data = []
+        // 扫描文档路径，获取各个版本的文档地址
+        fs.readdirSync(config.rootOutdir).forEach(function(file){
+            if(['doc_' +pkg.version, 'index.html', 'versions.js'].indexOf(file) == -1){
+                var d = require(fs.realpathSync('.') + path.join('/', config.rootOutdir, file, 'data.json'))
+                if(d && d.project){
+                    data.push({
+                        name: d.project.name,
+                        url: file + '/index.html', // TODO
+                        version:'v '+ d.project.docVersion 
+                    })
+                }
+            }
+        })
+        data.push({
+            name: pkg.name,
+            url: 'doc_' + pkg.version + '/index.html',
+            version: 'v ' + pkg.version
+        })
+        fs.writeFileSync(config.rootOutdir + 'versions.js', "window['__versionConfig'] = " + JSON.stringify(data) + ";");
+        fs.writeFileSync(config.rootOutdir + 'index.html', '<!DOCTYPE html>'+
+            '<html lang="en">'+
+            '<head>'+
+            '<meta charset="UTF-8">'+
+            '<meta name="viewport" content="width=device-width, initial-scale=1.0">'+
+            '<meta http-equiv="X-UA-Compatible" content="ie=edge">'+
+            '<title>Redirect</title>'+
+            '</head>'+
+            '<body></body>'+
+            '<script src="./versions.js"></script>'+
+            '<script>'+
+            'var firstItem = window.__versionConfig[0];'+
+            'window.location.href = firstItem.url;'+
+            '</script>'+
+            '</html>');
+        return data;
     }
 };
