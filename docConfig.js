@@ -2,8 +2,8 @@ module.exports = {
     //扫描的文件路径
     paths: ['input/code/'],
     //配置demo链接
-    demoUrl:'http://172.24.101.249:8000/input/demo/',
-    demoDir:"input/demo/",
+    demoUrl: 'http://172.24.101.249:8000/input/demo/',
+    demoDir: "input/demo/",
     //文档页面输出路径
     outdir: 'doc/',
     //内置主题
@@ -13,11 +13,11 @@ module.exports = {
     //项目信息配置
     project: {
         //项目名称
-        name: 'gfsdoc',
+        name: '商家线UI库',
         //项目描述，可以配置html，会生成到document主页
-        //description: '<h2>SmartDoc</h2> <p>Javascript Document builder base on YUIDoc.</p>',
+        description: 'phonix-ui',
         //是否是移动设备平台
-        isApp:true,
+        isApp: true,
         //版本信息
         version: '1.1.0',
         //是否隐藏defined in 注解(代码定义于第几行)
@@ -48,8 +48,8 @@ module.exports = {
     },
     //demo页面需要加载的js库
     demo: {
-        paths : ['input/code/ui/uicode.js'],
-        link : ['http://code.jquery.com/jquery-1.11.0.min.js'] 
+        paths: ['input/code/ui/uicode.js'],
+        link: ['http://code.jquery.com/jquery-1.11.0.min.js']
     }
 };
 

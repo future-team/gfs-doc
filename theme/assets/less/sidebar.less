@@ -1,0 +1,137 @@
+/**
+侧边栏less 定义
+*/
+
+#sidebar_list {
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 249px;
+    margin-top: 10px;
+    dt {
+        margin-top: 0;
+    }
+}
+
+#sidebar {
+    position: fixed;
+    top: 80px;
+    left: 120px;
+    width: 260px;
+    padding-left: 10px;
+    background-color: #fafafa;
+    border-right: solid 1px rgba(0, 0, 0, 0.07);
+    z-index: 4000;
+    border-right: solid 1px #e2e2e2;
+    -webkit-box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+    background: #fff;
+    &>.versions {
+        margin-bottom: 6px;
+        width: 100%
+    }
+    ul {
+        padding: 0 !important;
+        margin: 0;
+        overflow: hidden;
+        li {
+            list-style: none;
+        }
+        &>.nav-item {
+            .module {
+                font-size: 16px;
+                color: #5e6d82;
+                line-height: 40px;
+                height: 40px;
+                margin: 0;
+                padding: 0;
+                text-decoration: none;
+                display: block;
+                position: relative;
+                transition: all .3s;
+            }
+            &>.nav-group {
+                &>.sub-moudle {
+                    font-size: 12px;
+                    color: #99a9bf;
+                    padding-left: 8px;
+                    line-height: 26px;
+                    margin-top: 10px;
+                }
+            }
+        }
+        &.sub-nav {
+            &>.nav-item {
+                a {
+                    display: block;
+                    color:#5e6d82;
+                    height: 40px;
+                    line-height: 40px;
+                    font-size: 13px;
+                    padding-left: 24px;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    text-decoration:none;
+
+                    &.active,&:hover{
+                        color:#20a0ff;
+                    }
+                }
+            }
+        }
+    }
+    .glyphicon {
+        font-size: 12px;
+        cursor: pointer;
+        color: #2a6496;
+        padding: 0 1px;
+        &:hover {
+            font-size: 14px;
+            padding: 0;
+        }
+    }
+    dt {
+        margin-top: 5px;
+    }
+    ul {
+        padding-left: 20px;
+    }
+    li {
+        display: block;
+        margin-top: 7px;
+    }
+    a {
+        &:hover {
+            color: #c7254e;
+        }
+    }
+    .active {
+        color: #c7254e;
+    }
+}
+
+.icon-sidebar-btn {
+    position: absolute;
+    top: 28px;
+    right: 10px;
+    margin-top: -6px;
+    font-weight: normal;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.icon-sidebar-btn-close {
+    top: 11px;
+    margin-top: -6px;
+    font-weight: normal;
+    font-size: 12px;
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    padding-left: 20px;
+    background: rgba(255, 255, 255, 0.6);
+}

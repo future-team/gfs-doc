@@ -1,5 +1,44 @@
 <div id="sidebar">
-    <h3>模块/类</h3>
+    <div id="sidebar_list">
+        <div class="versions">
+            <h3>版本</h3>
+        </div>
+        <ul>
+            {{#modules}}
+                {{#if submodules}}
+                    <li class="nav-item">
+                        <span class="module">{{displayName}}</span>                 
+                            {{#submodules}}                        
+                                <div class="nav-group">
+                                    <div class="sub-moudle">
+                                        {{displayName}}
+                                    </div>
+                                    <ul class="pure-menu-list sub-nav" style="height: auto;">
+                                        {{#classes}}
+                                            <li class="nav-item">
+                                                <a href="{{../../../../projectRoot}}classes/{{name}}.html" class="">{{name}}</a>
+                                            </li>
+                                        {{/classes}}
+                                    </ul>
+                                </div>
+                            {{/submodules}}
+                    </li>    
+                {{else}}
+                    <li class="nav-item">
+                         <span class="module">{{displayName}}</span>
+                         <ul class="pure-menu-list sub-nav" style="height: auto;">
+                            {{#classes}}
+                                <li class="nav-item">
+                                    <a href="{{../../../projectRoot}}classes/{{name}}.html" class="">{{name}}</a>
+                                </li>
+                            {{/classes}}
+                        </ul>
+                    </li>    
+                {{/if}}
+            {{/modules}}
+        </ul>
+    </div>
+    <!--<h3>模块/类</h3>
         <div id="api-tabview-filter">
             <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter Modules/Classes">
         </div>
@@ -14,9 +53,9 @@
                    {{#classes}}
                        <li>
                             {{#if classitems}}
-                            <span class="glyphicon glyphicon-plus"></span>
+                             <span class="glyphicon glyphicon-plus"></span>
                             {{/if}}
-                           <a href="{{../../projectRoot}}classes/{{name}}.html">{{name}}</a>
+                                <a href="{{../../projectRoot}}classes/{{name}}.html">{{name}}</a>
                            <ul>
                                 {{#classitems}}
                                 <li>
@@ -30,6 +69,8 @@
                 </dd>
              {{/modules}}
         </dl>
-    <div class="icon-sidebar-btn icon-sidebar-btn-open"><span class="glyphicon glyphicon-chevron-left"></span>收起</div>
+    <div class="icon-sidebar-btn icon-sidebar-btn-open">
+        <span class="glyphicon glyphicon-chevron-left"></span>收起
+    </div>-->
 </div>
    

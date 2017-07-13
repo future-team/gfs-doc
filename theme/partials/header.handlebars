@@ -1,0 +1,65 @@
+<div class="headerWrapper">
+    <header class="header">
+        <div class="container">
+            <a class="title" href="{{projectUrl}}">
+                <h2>{{projectName}}</h2>
+                <h3>{{projectDescription}}</h3>
+            </a>
+     
+            <ul class="nav">
+                {{#projectNavs}}
+                    <li class="nav-item">
+                        <a href="{{url}}" class="">{{name}}</a>
+                    </li>
+                {{/projectNavs}}
+                <li class="nav-item">
+                    <span class="nav-lang active">中文</span>
+                    <span> / </span>
+                    <span class="nav-lang">En</span>
+                </li>
+            </ul>
+        </div>
+    </header>
+</div>
+
+
+<!--<nav class="navbar navbar-inverse navbar-fixed-top custom-navbar" role="navigation">
+    <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               <a class="navbar-brand mainlogo" href="{{projectUrl}}">
+             {{#if projectLogo}}
+                <img alt="{{projectName}}" src="{{projectLogo}}" title="{{projectName}}">
+            {{else}}
+                <img alt="{{projectName}}" src="{{projectAssets}}/css/logo.png" title="{{projectName}}">
+            {{/if}}
+            {{projectName}}
+          </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                 <ul class="nav navbar-nav">
+                    {{#projectNavs}}
+                    <li><a href="{{url}}">{{name}}</a>
+                    </li>
+                    {{/projectNavs}}
+                </ul>
+               <div class="navbar-form navbar-right filterAPi" autocomplete="off">
+                <input type="text" id='txtSearchAPI' class="form-control search-query" placeholder="Search for API" />
+                 <ul id="filterList" class="filterItems dropdown-menu" role="menu"></ul>
+                </div>
+                <div class="navbar-form navbar-right filterVersion" autocomplete="off">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            v {{projectDocVersion}}<span class="caret"></span>
+                        </button>
+                        <ul id="versionList" class="dropdown-menu"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+</nav>-->

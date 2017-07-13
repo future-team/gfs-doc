@@ -1,0 +1,109 @@
+/**
+media 定义
+*/
+
+@media (max-width:768px) {
+    .params-pc-table {
+        display: none;
+    }
+    .params-wap-table {
+        display: block;
+    }
+    body {
+        font-size: 12px;
+    }
+    pre {
+        code {
+            font-size: 12px;
+        }
+    }
+    .stdoc-content {
+        padding: 0 10px;
+    }
+    .container-fluid {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    .apidocs {
+        .index-list {
+            font-size: 14px;
+        }
+        .item {
+            .name {
+                font-size: 16px;
+            }
+        }
+    }
+    .yui3-smart {
+        p {
+            line-height: 22px;
+        }
+    }
+    h2 {
+        font-size: 18px;
+    }
+    h1 {
+        font-size: 20px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .app-example {
+        .device-box {
+            position: relative;
+        }
+        .device {
+            display: block;
+            position: absolute;
+            top: 78px;
+            left: 16px;
+            width: 395px;
+            height: 813px;
+            margin-left: -20px;
+            font-family: "Helvetica Neue", sans-serif;
+            background-image: url(device-sprite.png);
+            background-repeat: no-repeat;
+            background-position: -395px 0;
+            background-size: 300%;
+            -webkit-transition: background-image .1s linear;
+            -moz-transition: background-image .1s linear;
+            transition: background-image .1s linear;
+        }
+        .device-content {
+            background-color: #efeff4;
+            position: absolute;
+            top: 195px;
+            left: 33px;
+            width: 321px;
+            height: 569px;
+            max-height: 569px;
+            overflow: hidden;
+            font-size: 17px;
+            line-height: 21px;
+            z-index: 2;
+        }
+        .example-show {
+            background-color: #efeff4;
+            position: absolute;
+            top: 195px;
+            left: 33px;
+            width: 321px;
+            height: 569px;
+            max-height: 569px;
+            overflow: hidden;
+            font-size: 17px;
+            line-height: 21px;
+            z-index: 2;
+        }
+        .example-content {
+            .prettyprint {
+                margin-left: 395px;
+            }
+        }
+        min-height: 880px;
+        position: relative;
+        .btn-method-box {
+            text-align: right;
+        }
+    }
+}

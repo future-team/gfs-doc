@@ -1,6 +1,6 @@
 'use strict';
 
-exports.build = function(config, callback) {
+exports.build = function (config, callback) {
     var Y = require('yuidocjs'),
         fs = require("fs"),
         path = require('path'),
@@ -11,7 +11,7 @@ exports.build = function(config, callback) {
         shelljs = require('shelljs'),
         pkg = require(fs.realpathSync('.') + '/package.json');
     // 检查项目的package.json 的信息
-    if(!pkg){
+    if (!pkg) {
         console.error('the project package.json files not exits.')
         pkg = {
             version: '1.0.0'
@@ -40,8 +40,8 @@ exports.build = function(config, callback) {
                 return options.inverse(this);
         }
     });
-    Y.Handlebars.registerHelper('getValueByIndex', function (arr,index) {
-        return arr && arr.length ? arr[index]:'';
+    Y.Handlebars.registerHelper('getValueByIndex', function (arr, index) {
+        return arr && arr.length ? arr[index] : '';
     });
 
     var defaultThemes = {
@@ -61,7 +61,7 @@ exports.build = function(config, callback) {
         var docConfig = require(fs.realpathSync('.') + '/docConfig.js');
         docConfig.rootOutdir = docConfig.outdir || 'doc/'
         //  TODO 根据版本号命名
-        docConfig.outdir = (docConfig.outdir|| 'doc/') + 'doc_' +pkg.version + '/';
+        docConfig.outdir = (docConfig.outdir || 'doc/') + 'doc_' + pkg.version + '/';
         // 设置页面变量
         docConfig.project.docVersion = pkg.version;
         // 提前创建好目录，防止报错
@@ -100,7 +100,7 @@ exports.build = function(config, callback) {
         config.project.versions = getVersionsConf();
         //主题判断
         if (config.themedir) {
-             themeDir = config.themedir;
+            themeDir = config.themedir;
         } else {
             //判断是否默认主题
             themeDir = config.themedir = defaultThemes[config.theme] || defaultThemes['default'];
@@ -108,7 +108,7 @@ exports.build = function(config, callback) {
 
         if (!config.helpers)
             config.helpers = [themeDir + "helpers/helpers.js"];
-           
+
         demoBuilder = require(config.demoBuilder);
 
         try {
@@ -118,7 +118,7 @@ exports.build = function(config, callback) {
             return;
         }
         options = Y.Project.mix(json, options);
-        
+
         var builder = new Y.DocBuilder(options, json);
 
         var starttime = Date.now();
@@ -126,10 +126,10 @@ exports.build = function(config, callback) {
         console.log('Scanning: ' + options.paths);
         console.log('Output: ' + options.outdir);
 
-        builder.compile(function() {
+        builder.compile(function () {
             buildDocConfig(builder.data, builder._meta, options);
 
-            builder.writeDemo(function() {
+            builder.writeDemo(function () {
                 callback && callback();
                 console.log('SmartDoc compile completed in ' + ((Date.now() - starttime) / 1000) + ' seconds');
             });
@@ -138,22 +138,22 @@ exports.build = function(config, callback) {
 
     function buildDocConfig(data, meta, options) {
         var items = [];
-        
-        Y.each(data.modules, function(item) {
+
+        Y.each(data.modules, function (item) {
             item.name && items.push({
                 type: 'module',
                 name: item.name
             });
         });
 
-        Y.each(data.classes, function(item) {
+        Y.each(data.classes, function (item) {
             item.name && items.push({
                 type: 'class',
                 name: item.name
             });
         })
 
-        data.classitems.forEach(function(item) {
+        data.classitems.forEach(function (item) {
             item.name && items.push({
                 type: item.itemtype,
                 className: item['class'],
@@ -169,13 +169,15 @@ exports.build = function(config, callback) {
     }
 
     function extendYUIDoc() {
+        var classSelf = this;
+
         //重新模块生成
-        Y.DocBuilder.prototype.populateModules = function(opts) {
+        Y.DocBuilder.prototype.populateModules = function (opts) {
             var self = this;
             opts.meta.modules = [];
             opts.meta.allModules = [];
 
-            Y.each(this.data.modules, function(v) {
+            Y.each(this.data.modules, function (v) {
                 if (v.external) {
                     return;
                 }
@@ -203,12 +205,13 @@ exports.build = function(config, callback) {
                     };
                     if (v.submodules) {
                         o.submodules = [];
-                        Y.each(v.submodules, function(i, k) {
+                        Y.each(v.submodules, function (i, k) {
                             var moddef = self.data.modules[k];
                             if (moddef) {
                                 o.submodules.push({
                                     displayName: k,
-                                    description: moddef.description
+                                    description: moddef.description,
+                                    classes: getClassesBySubmodule(self.data.classes, k)
                                 });
                                 // } else {
                                 //     Y.log('Submodule data missing: ' + k + ' for ' + v.name, 'warn', 'builder');
@@ -225,20 +228,20 @@ exports.build = function(config, callback) {
         }
 
         //添加demo写入功能
-        Y.DocBuilder.prototype.writeDemo = function(cb) {
+        Y.DocBuilder.prototype.writeDemo = function (cb) {
             var self = this,
                 stack = new Y.Parallel();
 
             Y.log('Preparing demo.html', 'info', 'builder');
 
-            render(self, stack.add(function(html, view) {
+            render(self, stack.add(function (html, view) {
                 stack.html = html;
                 stack.view = view;
-                Y.Files.writeFile(path.join(self.options.outdir + 'assets/', 'demo.html'), html, stack.add(function() {}));
-                Y.Files.writeFile(path.join(self.options.outdir + 'assets/', 'show.html'), html + "<script src='js/show.js'></script>", stack.add(function() {}));
+                Y.Files.writeFile(path.join(self.options.outdir + 'assets/', 'demo.html'), html, stack.add(function () { }));
+                Y.Files.writeFile(path.join(self.options.outdir + 'assets/', 'show.html'), html + "<script src='js/show.js'></script>", stack.add(function () { }));
             }));
 
-            stack.done(function(html, view) {
+            stack.done(function (html, view) {
                 Y.log('Writing demo.html', 'info', 'builder');
                 cb(stack.html, stack.view);
             });
@@ -247,40 +250,40 @@ exports.build = function(config, callback) {
         extendYUIBuilder();
     }
 
-    function extendYUIBuilder(){
-        var _parseCode =  Y.DocBuilder.prototype._parseCode;
+    function extendYUIBuilder() {
+        var _parseCode = Y.DocBuilder.prototype._parseCode;
 
-        Y.DocBuilder.prototype._parseCode = function(html){
-            return '<div class="stdoc-code">' + _parseCode.call(this,html) + "</div>";
+        Y.DocBuilder.prototype._parseCode = function (html) {
+            return '<div class="stdoc-code">' + _parseCode.call(this, html) + "</div>";
         }
 
         //扩展demo标签处理
-        Y.DocParser.DIGESTERS.demo = function(tagname, value, target, block) {
+        Y.DocParser.DIGESTERS.demo = function (tagname, value, target, block) {
             var content = target["example"],
                 urls = target['exampleUrls'],
-                data,titles = target["exampleTitles"];
+                data, titles = target["exampleTitles"];
 
-            if(!content)
+            if (!content)
                 content = target["example"] = [];
 
-            if(!titles)
+            if (!titles)
                 titles = target["exampleTitles"] = [];
-            if(!urls)
-                urls = target['exampleUrls']=[];
+            if (!urls)
+                urls = target['exampleUrls'] = [];
 
 
             if (value) {
                 var v = [];
-                if(value.indexOf('|')>=0 ){
-                    v= value.split('|');
-                    if(config.demoUrl){
-                        v[0] = config.demoUrl+v[0];
+                if (value.indexOf('|') >= 0) {
+                    v = value.split('|');
+                    if (config.demoUrl) {
+                        v[0] = config.demoUrl + v[0];
                     }
-                }else{
-                    v = ['',value];
+                } else {
+                    v = ['', value];
                 }
                 var data = demoBuilder.build(v[1], config, target);
-                if(data && data.code){
+                if (data && data.code) {
                     urls.push(v[0]);
                     content.push(data.code);
                     titles.push(data.title);
@@ -290,7 +293,7 @@ exports.build = function(config, callback) {
         }
 
         //扩展demo标签处理
-        Y.DocParser.DIGESTERS.show = function(tagname, value, target, block) {
+        Y.DocParser.DIGESTERS.show = function (tagname, value, target, block) {
             target["show"] = true;
         }
     }
@@ -304,7 +307,7 @@ exports.build = function(config, callback) {
     }
 
     function render(builder, cb) {
-        Y.prepare([themeDir, themeDir], builder.getProjectMeta(), function(err, opts) {
+        Y.prepare([themeDir, themeDir], builder.getProjectMeta(), function (err, opts) {
             var css = [],
                 script = [],
                 demo = builder.options.demo;
@@ -325,7 +328,7 @@ exports.build = function(config, callback) {
                 if (demo.paths) {
                     var resPath = builder.options.outdir + 'assets/res';
                     fs.mkdirSync(resPath);
-                    demo.paths.forEach(function(item) {
+                    demo.paths.forEach(function (item) {
                         if (item.charAt(item.length - 1) === '/') {
                             copyDir(addRes, item, resPath);
                         } else {
@@ -352,8 +355,7 @@ exports.build = function(config, callback) {
     }
 
     function copyDir(addRes, src, dst) {
-         if (!fs.existsSync(src))
-        {
+        if (!fs.existsSync(src)) {
             console.error("demo加载目录不存在：" + src);
             return;
         }
@@ -363,15 +365,14 @@ exports.build = function(config, callback) {
         // 读取目录中的所有文件/目录
         var paths = fs.readdirSync(src);
 
-        paths.forEach(function(fileName) {
-            copyRes(addRes, fileName, src + (src.lastIndexOf('/')>=0?'':'/') + fileName, dst)
+        paths.forEach(function (fileName) {
+            copyRes(addRes, fileName, src + (src.lastIndexOf('/') >= 0 ? '' : '/') + fileName, dst)
         });
 
     }
 
     function copyRes(addRes, fileName, src, dst) {
-         if (!fs.existsSync(src))
-        {
+        if (!fs.existsSync(src)) {
             console.error("demo加载文件不存在：" + src);
             return;
         }
@@ -381,7 +382,7 @@ exports.build = function(config, callback) {
             var _dst = dst + '/' + fileName,
                 readable, writable;
 
-            stat(src, function(err, st) {
+            stat(src, function (err, st) {
                 if (err) {
                     throw err;
                 }
@@ -406,17 +407,17 @@ exports.build = function(config, callback) {
     }
 
     // 同时写一份 versions.js 文件记录版本信息
-    function getVersionsConf(){
+    function getVersionsConf() {
         var data = []
         // 扫描文档路径，获取各个版本的文档地址
-        fs.readdirSync(config.rootOutdir).forEach(function(file){
-            if(['doc_' +pkg.version, 'index.html', 'versions.js'].indexOf(file) == -1){
+        fs.readdirSync(config.rootOutdir).forEach(function (file) {
+            if (['doc_' + pkg.version, 'index.html', 'versions.js'].indexOf(file) == -1) {
                 var d = require(fs.realpathSync('.') + path.join('/', config.rootOutdir, file, 'data.json'))
-                if(d && d.project){
+                if (d && d.project) {
                     data.push({
                         name: d.project.name,
                         url: file + '/index.html', // TODO
-                        version:'v '+ d.project.docVersion 
+                        version: 'v ' + d.project.docVersion
                     })
                 }
             }
@@ -427,21 +428,38 @@ exports.build = function(config, callback) {
             version: 'v ' + pkg.version
         })
         fs.writeFileSync(config.rootOutdir + 'versions.js', "window['__versionConfig'] = " + JSON.stringify(data) + ";");
-        fs.writeFileSync(config.rootOutdir + 'index.html', '<!DOCTYPE html>'+
-            '<html lang="en">'+
-            '<head>'+
-            '<meta charset="UTF-8">'+
-            '<meta name="viewport" content="width=device-width, initial-scale=1.0">'+
-            '<meta http-equiv="X-UA-Compatible" content="ie=edge">'+
-            '<title>Redirect</title>'+
-            '</head>'+
-            '<body></body>'+
-            '<script src="./versions.js"></script>'+
-            '<script>'+
-            'var firstItem = window.__versionConfig[0];'+
-            'window.location.href = firstItem.url;'+
-            '</script>'+
+        fs.writeFileSync(config.rootOutdir + 'index.html', '<!DOCTYPE html>' +
+            '<html lang="en">' +
+            '<head>' +
+            '<meta charset="UTF-8">' +
+            '<meta name="viewport" content="width=device-width, initial-scale=1.0">' +
+            '<meta http-equiv="X-UA-Compatible" content="ie=edge">' +
+            '<title>Redirect</title>' +
+            '</head>' +
+            '<body></body>' +
+            '<script src="./versions.js"></script>' +
+            '<script>' +
+            'var firstItem = window.__versionConfig[0];' +
+            'window.location.href = firstItem.url;' +
+            '</script>' +
             '</html>');
         return data;
+    }
+
+    /**
+     * 根据submodule 分组classes
+     * @param {*} data 
+     * @param {*} submodule 
+     */
+    function getClassesBySubmodule(data, submodule) {
+        var c_array = [];
+
+        Y.each(data, function (i, o) {
+            if (data[o].submodule === submodule) {
+                c_array.push(data[o])
+            }
+        })
+
+        return c_array
     }
 };

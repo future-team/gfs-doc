@@ -3,7 +3,8 @@
  * additional functionaity to what is provided in yui-base, and the
  * methods are applied directly to the YUI instance.  This module
  * is required for most YUI components.
- * @module oop
+ * @module 基础组件
+ * @submodule basic222
  */
 
 /**

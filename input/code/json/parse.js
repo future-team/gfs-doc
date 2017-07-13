@@ -18,19 +18,10 @@
  * include either of the submodules individually if you don't need the
  * complementary functionality, or include the rollup for both.</p>
  *
- * @module json
+ * @module 基础组件
+ * @submodule basic
  * @main json
  * @class JSON
- * @static
- */
-
-/**
- * Provides Y.JSON.parse method to accept JSON strings and return native
- * JavaScript objects.
- *
- * @module json
- * @submodule json-parse
- * @for JSON
  * @static
  */
 

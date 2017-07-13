@@ -1,8 +1,8 @@
 /**
  * Provides Y.JSON.stringify method for converting objects to JSON strings.
  *
- * @module json
- * @submodule json-stringify
+ * @module 基础组件
+ * @submodule basic
  * @for JSON
  * @static
  */

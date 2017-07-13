@@ -1,6 +1,7 @@
 /**
  * This is my example module
- * @module ExampleModule
+ * @module 基础组件
+ * @submodule basic
  * @example
  *
  *     var bar;

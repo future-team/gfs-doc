@@ -5,7 +5,7 @@
     Update Note：
         + 2014.10 ：Created
 
-    @module Promise
+    @module 基础组件
 */
 stDefine('deferred', function(st) {
 
