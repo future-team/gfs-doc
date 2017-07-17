@@ -1,5 +1,36 @@
-<div id="method_{{name}}" class="method item{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if extended_from}} inherited{{/if}}">
-    <h3 class="name">{{name}}</h3>
+<div id="method_{{name}}" class="method block {{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if extended_from}} inherited{{/if}}">
+    <h3>方法</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>方法名</th>
+                <th>说明</th>
+                <th>参数</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#methods}}
+            <tr>
+                <td>
+                    {{name}}
+                </td>
+                <td>{{{methodDescription}}}</td>
+                <td>
+                    {{#if params}}
+                        <ul class="args-list inline commas">
+                            {{#params}}
+                                <li class="arg">{{name}} ({{type}})</li>
+                            {{/params}}
+                        </ul>                       
+                    {{else}}
+                        —
+                    {{/if}}
+                </td>
+            </tr>
+            {{/methods}}
+        </tbody>
+    </table>
+    <!--<h3 class="name">{{name}}</h3>
     <code>
     {{name}}
     {{#if params}}
@@ -288,5 +319,5 @@
 
             <div class="device"></div>
         </div>
-    {{/if}}
+    {{/if}}-->
 </div>

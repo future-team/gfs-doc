@@ -3,7 +3,7 @@
     ui测试模块；
     * 提供了example的html与js实例；
     * example中引用了jquery的dns和本模块的uiCode.js文件
-	@module 更新日志
+	@module 更新组件
 */
 (function() {
      

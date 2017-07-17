@@ -1,10 +1,10 @@
 var fs = require("fs");
 
-function getSetting(path,startFlag,endFlag){
-    var start = path.indexOf(startFlag),end,setting;
+function getSetting(path, startFlag, endFlag) {
+    var start = path.indexOf(startFlag), end, setting;
     if (start > 0) {
         end = path.indexOf(endFlag);
-        if(end > start){
+        if (end > start) {
             return [path.substr(0, index),]
         }
         unit = path.substring(index + 1, path.length - 1);
@@ -13,9 +13,9 @@ function getSetting(path,startFlag,endFlag){
 }
 
 module.exports = {
-    build : function (path,config, target) {
+    build: function (path, config, target) {
         var index = path.indexOf("{"),
-            unit,title, code,loader;
+            unit, title, code, loader;
 
         path = path.replace(/\{([\s\S]*?)}/g, function (s, matched) {
             title = matched;
@@ -35,23 +35,23 @@ module.exports = {
             return data;
         }
 
-        if(!title){
-            title = path.substring(path.lastIndexOf('/') + 1,path.indexOf('.'));
+        if (!title) {
+            title = path.substring(path.lastIndexOf('/') + 1, path.indexOf('.'));
         }
 
-        if(unit){
+        if (unit) {
             loader = require(config.codeLoader);
             code = loader.load(path, unit, getCode, this.formatCode);
         }
         else
-             code = this.formatCode(getCode(path))
+            code = this.formatCode(getCode(path))
 
         return {
-            code : code,
-            title : title
+            code: code,
+            title: title
         };
     },
-    formatCode :  function (code) {
+    formatCode: function (code) {
         if (code)
             return "\t" + code.replace(/\n/g, '\n\t');
     }

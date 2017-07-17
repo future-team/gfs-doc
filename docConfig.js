@@ -2,7 +2,7 @@ module.exports = {
     //扫描的文件路径
     paths: ['input/code/'],
     //配置demo链接
-    demoUrl: 'http://172.24.101.249:8000/input/demo/',
+    demoUrl: 'http://future-team.github.io/eagle-ui/examples/index.html',
     demoDir: "input/demo/",
     //文档页面输出路径
     outdir: 'doc/',
@@ -17,7 +17,7 @@ module.exports = {
         //项目描述，可以配置html，会生成到document主页
         description: 'phonix-ui',
         //是否是移动设备平台
-        isApp: true,
+        isApp: false,
         //版本信息
         version: '1.1.0',
         //是否隐藏defined in 注解(代码定义于第几行)

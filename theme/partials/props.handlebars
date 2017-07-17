@@ -1,5 +1,30 @@
-<div id="property_{{name}}" class="property item{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if extended_from}} inherited{{/if}}">
-    <h3 class="name"><code>{{name}}</code></h3>
+<div id="property_{{name}}" class="property block item{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if extended_from}} inherited{{/if}}">
+    <h3>属性</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>参数</th>
+                <th>说明</th>
+                <th>类型</th>
+                <th>可选值</th>
+                <th>默认值</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#properties}}
+            <tr>
+                <td>
+                    {{name}}
+                </td>
+                <td>{{{propertyDescription}}}</td>
+                <td>{{type}}</td>
+                <td>{{#if optional}}{{optional}}{{else}}—{{/if}}</td>
+                <td>{{#if default}}{{default}}{{else}}—{{/if}}</td>
+            </tr>
+            {{/properties}}
+        </tbody>
+    </table>
+    <!--<h3 class="name"><code>{{name}}</code></h3>
     <span class="type">{{#crossLink type}}{{/crossLink}}</span>
 
     {{#if deprecated}}
@@ -116,5 +141,5 @@
             </li>
             {{/subprops}}
         </ul>
-    {{/if}}
+    {{/if}}-->
 </div>

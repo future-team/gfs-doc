@@ -128,7 +128,7 @@ media 定义
 .headerWrapper {
   height: 80px;
 }
-.header {
+.headerWrapper .header {
   height: 80px;
   background-color: #20a0ff;
   color: #fff;
@@ -139,14 +139,14 @@ media 定义
   z-index: 100;
   position: fixed;
 }
-.header .container {
+.headerWrapper .header .container {
   height: 100%;
   box-sizing: border-box;
   width: 1200px;
   padding: 0 30px;
   margin: 0 auto;
 }
-.header .title {
+.headerWrapper .header .title {
   margin: 0;
   float: left;
   font-weight: 400;
@@ -154,11 +154,11 @@ media 定义
   text-decoration: none;
   padding-top: 10px;
 }
-.header .title h2,
-.header .title h3 {
+.headerWrapper .header .title h2,
+.headerWrapper .header .title h3 {
   margin: 5px 0;
 }
-.header .nav {
+.headerWrapper .header .nav {
   float: right;
   height: 100%;
   line-height: 80px;
@@ -166,7 +166,7 @@ media 定义
   padding: 0;
   margin: 0;
 }
-.header .nav .nav-item {
+.headerWrapper .header .nav .nav-item {
   margin: 0;
   float: left;
   list-style: none;
@@ -174,7 +174,7 @@ media 定义
   cursor: pointer;
   margin-left: 20px;
 }
-.header .nav .nav-item a {
+.headerWrapper .header .nav .nav-item a {
   text-decoration: none;
   color: #fff;
   display: block;
@@ -183,14 +183,14 @@ media 定义
   font-size: 16px;
   background-color: #20a0ff;
 }
-.header .nav .nav-item a:hover {
+.headerWrapper .header .nav .nav-item a:hover {
   opacity: 1;
 }
-.header .nav .nav-item a.active {
+.headerWrapper .header .nav .nav-item a.active {
   font-weight: 700;
   opacity: 1;
 }
-.header .nav .nav-item a.active:before {
+.headerWrapper .header .nav .nav-item a.active:before {
   content: "";
   display: block;
   position: absolute;
@@ -323,6 +323,59 @@ media 定义
   padding-left: 20px;
   background: rgba(255, 255, 255, 0.6);
 }
+/**
+* 定义类的less 文件
+*/
+.class-container {
+  padding: 30px 15px 30px 0;
+}
+.class-container h2,
+.class-container h3 {
+  font-weight: 400;
+  margin: 0;
+}
+.class-container h2 {
+  color: #1f2f3d;
+  font-size: 28px;
+}
+.class-container h3 {
+  font-size: 22px;
+}
+.class-container > .header p {
+  margin: 14px 0;
+  font-size: 14px;
+  color: #5e6d82;
+  line-height: 1.5em;
+}
+.class-container > .block h3 {
+  margin: 25px 0 15px;
+}
+.class-container > .block > .table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: #fff;
+  color: #5e6d82;
+  font-size: 14px;
+  margin-bottom: 45px;
+  line-height: 1.5em;
+}
+.class-container > .block > .table th {
+  border-bottom: 1px solid #eaeefb;
+  padding: 10px;
+  max-width: 250px;
+  text-align: left;
+  border-top: 1px solid #eaeefb;
+  background-color: #eff2f7;
+  white-space: nowrap;
+}
+.class-container > .block > .table th:first-child {
+  padding-left: 10px;
+}
+.class-container > .block > .table td {
+  border-bottom: 1px solid #eaeefb;
+  padding: 10px;
+  max-width: 250px;
+}
 body.yui3-smart {
   font-family: 'Helvetica Neue', Helvetica, 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
 }
@@ -375,7 +428,7 @@ div.filterAPi {
 }
 .stdoc-content {
   margin-left: 400px;
-  padding: 0 30px;
+  padding: s30px;
 }
 #txtSearch {
   width: 240px;

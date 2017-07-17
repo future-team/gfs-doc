@@ -6,6 +6,7 @@
         + 2014.10 ：Created
 
     @module 基础组件
+    @submodule Promise
 */
 stDefine('deferred', function(st) {
 

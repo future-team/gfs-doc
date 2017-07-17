@@ -1,5 +1,37 @@
-<div id="event_{{name}}" class="events item{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if extended_from}} inherited{{/if}}">
-    <h3 class="name"><code>{{name}}</code></h3>
+<div id="event_{{name}}" class="events block {{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if extended_from}} inherited{{/if}}">
+    <h3>事件</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>事件名</th>
+                <th>说明</th>
+                <th>参数</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#events}}
+            <tr>
+                <td>
+                    {{name}}
+                </td>
+                <td>{{{eventDescription}}}</td>
+                <td>
+                    {{#if params}}
+                        <ul class="args-list inline commas">
+                            {{#params}}
+                                <li class="arg">{{name}} ({{type}})</li>
+                            {{/params}}
+                        </ul>                       
+                    {{else}}
+                        —
+                    {{/if}}
+                </td>
+            </tr>
+            {{/events}}
+        </tbody>
+    </table>
+
+    <!--<h3 class="name"><code>{{name}}</code></h3>
     <span class="type">{{#crossLink type}}{{/crossLink}}</span>
 
     {{#if deprecated}}
@@ -228,5 +260,5 @@
             <button class="btn-viewDemo btn btn-success" type="button">view demo</button>
             <button class="btn-runDemo btn btn-success" type="button">edit code</button>
         </div>
-    {{/example}}
+    {{/example}}-->
 </div>
