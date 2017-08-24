@@ -43,16 +43,19 @@
             </div>
         </div>
     </nav>
-    {{>sidebar}}
-    <div class="stdoc-content">
-        <div class="apidocs">
-            <div id="docs-main">
-                <div class="content">
-                    {{>layout_content}}
+    <div class="gfs-wrapper clearfix">
+        {{>sidebar}}
+        <div class="stdoc-content">
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        {{>layout_content}}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    
 <a id="gotoTop" class='well well-small' href='#'>
 </a>
 <script src="{{projectAssets}}/vendor/jquery/jquery-1.8.2.js"></script>

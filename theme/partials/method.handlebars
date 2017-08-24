@@ -1,292 +1,31 @@
-<div id="method_{{name}}" class="method item{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if extended_from}} inherited{{/if}}">
-    <h3 class="name">{{name}}</h3>
-    <code>
-    {{name}}
-    {{#if params}}
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            {{#params}}
-                <li class="arg">
-                    {{#if optional}}
-                        [{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]
-                    {{else}}
-                        {{name}}
-                    {{/if}}
-                </li>
-            {{/params}}
-            </ul><span class="paren">)</span>
-        </div>
-    {{else}}
-        <span class="paren">()</span>
-    {{/if}}
-    </code>
-
-    {{#if return}}
-        <span class="returns-inline">
-            <span class="type">{{#crossLink returnType}}{{/crossLink}}</span>
-        </span>
-    {{/if}}
-
-    {{#if deprecated}}
-        <span class="flag deprecated"{{#if deprecationMessage}} title="{{deprecationMessage}}"{{/if}}>deprecated</span>
-    {{/if}}
-
-    {{#if access}}
-        <span class="flag {{access}}">{{access}}</span>
-    {{/if}}
-
-    {{#if final}}
-        <span class="flag final">final</span>
-    {{/if}}
-
-    {{#if static}}
-        <span class="flag static">static</span>
-    {{/if}}
-
-    {{#if chainable}}
-        <span class="flag chainable">chainable</span>
-    {{/if}}
-
-    {{#if async}}
-        <span class="flag async">async</span>
-    {{/if}}
-
-    <div class="meta">
-        {{#if overwritten_from}}
-            <p>Inherited from
-            <a href="{{crossLinkRaw overwritten_from/class}}#method_{{overwritten_from/name}}">
-                {{overwritten_from/class}}
-            </a>
-            {{#if foundAt}}
-            but overwritten in
+<tr class="param">
+     <td> 
+        <code class="param-name">{{name}}</code>
+    </td>
+    <td>
+        <div class="param-description">
+            {{#if deprecated}}deprecated,{{/if}}{{#if deprecationMessage}}<p>Deprecated: {{deprecationMessage}},{{/if}}{{#if since}} Available since {{since}}.</p>{{/if}}
+            {{{methodDescription}}}
+            {{#if return}}
+                <span class="returns-inline">
+                    return<span class="type">{{#crossLink returnType}}{{/crossLink}}</span>
+                </span>
             {{/if}}
-        {{else}}
-            {{#if extended_from}}
-                <p>Inherited from
-                <a href="{{crossLinkRaw extended_from}}#method_{{name}}">{{extended_from}}</a>:
-            {{else}}
-                {{#providedBy}}
-                    <p>Provided by the <a href="../modules/{{.}}.html">{{.}}</a> module.</p>
-                {{/providedBy}}
-                <p class="foundat">
-                {{#if foundAt}}
-                Defined in
-                {{/if}}
+        </div>
+    </td>
+    <td>
+        {{#params}}
+            <div>{{name}}<span class="type">{{#crossLink type}}{{/crossLink}}</span><span class="param-description">{{{description}}}</span></div>
+            {{#if props}}
+                {{#props}}
+                    <div>{{../name}}.{{name}}<span class="type">{{#crossLink type}}{{/crossLink}}</span><span class="param-description">{{{description}}}</span></div>
+                {{/props}}
             {{/if}}
-        {{/if}}
-        {{#if foundAt}}
-        <a href="{{foundAt}}">`{{{file}}}:{{{line}}}`</a>
-        {{/if}}
-        </p>
+            
+        {{/params}}
+    </td>
+    
+</tr>
 
 
-        {{#if deprecationMessage}}
-            <p>Deprecated: {{deprecationMessage}}</p>
-        {{/if}}
-
-        {{#if since}}
-            <p>Available since {{since}}</p>
-        {{/if}}
-    </div>
-
-    <div class="description well well-small sign-left3">
-        {{{methodDescription}}}
-    </div>
-
-    {{#if params}}
-        <div class="params">
-            <h4>参数:</h4>
-            <div class="clearfix params-wap-table">
-                {{#params}}
-                    <div class="params-box">
-                        {{#if optional}}
-                            <code class="param-name optional">[{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]</code>
-                            <span class="type">{{#crossLink type}}{{/crossLink}}</span>
-                            <span class="flag optional" title="This parameter is optional.">optional</span>
-                        {{else}}
-                            <code class="param-name">{{name}}</code>
-                            <span class="type">{{#crossLink type}}{{/crossLink}}</span>
-                        {{/if}}
-
-                        {{#if multiple}}
-                            <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
-                        {{/if}}
-
-                        <span class="param-description">
-                            {{{description}}}
-                        </span>
-                    </div>
-                    {{#if props}}
-                        {{#props}}
-                            <div class="params-box">
-                                {{#if optional}}
-                                    <code class="param-name optional">[{{../../name}}.{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]</code>
-                                    <span class="type">{{#crossLink type}}{{/crossLink}}</span>
-                                    <span class="flag optional" title="This parameter is optional.">optional</span>
-                                {{else}}
-                                    <code class="param-name">{{../../name}}.{{name}}</code>
-                                    <span class="type">{{#crossLink type}}{{/crossLink}}</span>
-                                {{/if}}
-
-                                {{#if multiple}}
-                                    <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
-                                {{/if}}
-
-                                <span class="param-description">
-                                    {{{description}}}
-                                </span>
-                            </div>
-
-                            {{#if props}}
-                                {{#props}}
-                                    <div class="params-box">
-                                        {{#if optional}}
-                                            <code class="param-name optional">[{{../../../../name}}.{{../../name}}.{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]</code>
-                                            <span class="type">{{#crossLink type}}{{/crossLink}}</span>
-                                            <span class="flag optional" title="This parameter is optional.">optional</span>
-                                        {{else}}
-                                            <code class="param-name">{{../../../../name}}.{{../../name}}.{{name}}</code>
-                                            <span class="type">{{#crossLink type}}{{/crossLink}}</span>
-                                        {{/if}}
-
-                                        {{#if multiple}}
-                                            <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
-                                        {{/if}}
-
-                                        <span class="param-description">
-                                            {{{description}}}
-                                        </span>
-                                    </div>
-                                {{/props}}
-                            {{/if}}
-
-                        {{/props}}
-                    {{/if}}
-                {{/params}}
-            </div>
-
-            <table class="table table-bordered params-pc-table">
-                <tr class='active'><th>参数名</th><th>类型</th><th>标识</th><th>描述</th></tr>
-                {{#params}}
-                    <tr class="param">
-                        {{#if optional}}
-                            <td><code class="param-name optional">[{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]</code></td>
-                            <td><span class="type">{{#crossLink type}}{{/crossLink}}</span></td>
-                        <td><span class="flag optional" title="This parameter is optional.">optional</span>
-                        {{else}}
-                            <td> <code class="param-name">{{name}}</code>
-                            <td> <span class="type">{{#crossLink type}}{{/crossLink}}</span>
-                        <td>
-                        {{/if}}
-
-                        {{#if multiple}}
-                            <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
-                        {{/if}}
-                    </td>
-                    <td><div class="param-description">
-                        {{{description}}}
-                    </div>
-
-                        {{#if props}}
-                            <table class="table table-bordered">
-                                <tr class='active'><th>参数名</th><th>类型</th><th>标识</th><th>描述</th></tr>
-                                {{#props}}
-                                    <tr class="param">
-                                        {{#if optional}}
-                                            <td>
-                                                <code class="param-name optional">[{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]</code></td>
-                                            <td><span class="type">{{#crossLink type}}{{/crossLink}}</span></td>
-                                        <td><span class="flag optional" title="This parameter is optional.">optional</span>
-                                        {{else}}
-                                            <td> <code class="param-name">{{name}}</code>
-                                            <td> <span class="type">{{#crossLink type}}{{/crossLink}}</span>
-                                        <td>
-                                        {{/if}}
-
-                                        {{#if multiple}}
-                                            <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
-                                        {{/if}}
-                                    </td>
-                                    <td><div class="param-description">
-                                        {{{description}}}
-                                    </div>
-                                        {{#if props}}
-                                            <table class="table table-bordered">
-                                                <tr class='active'><th>参数名</th><th>类型</th><th>标识</th><th>描述</th></tr>
-                                                {{#props}}
-                                                    <tr class="param">
-                                                        {{#if optional}}
-                                                            <td>
-                                                                <code class="param-name optional">[{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]</code></td>
-                                                            <td><span class="type">{{#crossLink type}}{{/crossLink}}</span></td>
-                                                        <td><span class="flag optional" title="This parameter is optional.">optional</span>
-                                                        {{else}}
-                                                            <td> <code class="param-name">{{name}}</code>
-                                                            <td> <span class="type">{{#crossLink type}}{{/crossLink}}</span>
-                                                        <td>
-                                                        {{/if}}
-
-                                                        {{#if multiple}}
-                                                            <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
-                                                        {{/if}}
-                                                    </td>
-                                                        <td><div class="param-description">
-                                                            {{{description}}}
-                                                        </div>
-                                                        </td>
-                                                    </tr>
-                                                {{/props}}
-                                            </table>
-                                        </td>
-                                        {{/if}}
-                                    </tr>
-                                {{/props}}
-                            </table>
-                        </td>
-                        {{/if}}
-                    </tr>
-                {{/params}}
-            </table>
-
-        </div>
-    {{/if}}
-
-    {{#return}}
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                {{#if description}}
-                    {{#if type}}
-                        [<span class="type">{{#crossLink type}}{{/crossLink}}</span>]
-                    {{/if}}
-                    {{{description}}}
-                {{else}}
-                    {{#if type}}
-                        <span class="type">{{#crossLink type}}{{/crossLink}}</span>:
-                    {{/if}}
-                {{/if}}
-            </div>
-        </div>
-    {{/return}}
-
-    {{#if example}}
-        <div class="example{{#if isApp}}{{#if show}} app-example{{/if}}{{/if}}">
-            <h4>Example:</h4>
-            <ul class="nav nav-tabs example-list">
-                {{#each exampleTitles}}
-                <li role="presentation" {{#if @index}} {{else}} class="active" {{/if}} data-demo="{{getValueByIndex ../exampleUrls @index}}"  _no='{{@index}}'> <a>{{this}}</a></li>
-                {{/each}}
-            </ul>
-            <div class="example-content {{#if show}} showdemo {{/if}}">
-                {{{example}}}
-            </div>
-            <div class="btn-method-box">
-                <button class="btn btn-info btn-viewDemo" type="button">查看示例</button>
-                <button class="btn btn-info btn-editDemo" type="button">编辑代码</button>
-            </div>
-
-            <div class="device"></div>
-        </div>
-    {{/if}}
-</div>
+ 
