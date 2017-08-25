@@ -1,6 +1,6 @@
 {
     "name": "gfs-doc",
-    "version": "0.1.40",
+    "version": "0.1.43",
     "description": "Javascript Document & Demo builder (base on YUIDoc and bootstrap 3).",
     "homepage": "https://github.com/future-team/gfs-doc",
     "main": "gfsdoc.js",
