@@ -212,7 +212,7 @@ $(function() {
         // }else{
         //     ifr.height(win.document.body.scrollHeight);
         // }
-        ifr.height(1000);
+        // ifr.height(1000);
         try{
             ifr.height(win.document.body.scrollHeight);
             // interval=setInterval(function(){
@@ -386,5 +386,13 @@ $(function() {
             $('.icon-sidebar-btn').trigger('click');
             $('body').css('font-size',12);
         }
+
+        $('.gfsdoc-source-code').toggle(function(){
+            $(this).find('span').html('收起');
+            $(this).next().slideDown();
+        },function(){
+            $(this).find('span').html('展开');
+            $(this).next().slideUp();
+        });
     });
 });

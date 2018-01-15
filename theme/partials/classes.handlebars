@@ -68,9 +68,12 @@
     {{#if example}}
         <div class="example">
             <h4>示例展示:</h4>
-            <div class="example-content {{#if show}} showdemo {{/if}}" data-demo="{{getValueByIndex ../exampleUrls 0}}">
-                
+            <div class="example-content {{#if show}} showdemo {{/if}}" data-demo="{{getValueByIndex ../exampleUrls 0}}"> 
             </div>
+            {{!-- <div class="gfsdoc-stdoc-code">
+                <button class="btn btn-default btn-viewDemo gfsdoc-source-code" type="button"><span>展开</span>源码</button>
+                <div class="gfs-code">{{{example}}}</div>
+            </div> --}}
         </div>
     {{/if}}
 </div>
